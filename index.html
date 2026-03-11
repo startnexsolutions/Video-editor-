@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALEX REEL — Video Editor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ─── NAVIGATION ─── -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">ALEX REEL</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Work</a></li>
+      <li><a href="#upload">Upload</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark/light theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+        <span class="toggle-label" id="themeLabel">Dark</span>
+      </button>
+      <div class="hamburger" id="hamburger">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ─── HERO ─── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-tag"><span class="dot"></span>Available for Projects</div>
+      <h1 class="hero-title">
+        Crafting<br><span>Stories</span>In Motion
+      </h1>
+      <p class="hero-subtitle">
+        Award-winning video editor specializing in cinematic storytelling, brand films, and viral content that moves audiences and builds brands.
+      </p>
+      <div class="hero-actions">
+        <a href="#portfolio" class="btn-primary"><i class="fas fa-play"></i> Watch Showreel</a>
+        <a href="#contact" class="btn-outline"><i class="fas fa-paper-plane"></i> Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-num" data-count="250">0</div><div class="stat-label">Projects Done</div></div>
+        <div><div class="stat-num" data-count="8">0</div><div class="stat-label">Years Experience</div></div>
+        <div><div class="stat-num" data-count="120">0</div><div class="stat-label">Happy Clients</div></div>
+        <div><div class="stat-num" data-count="15">0</div><div class="stat-label">Awards Won</div></div>
+      </div>
+    </div>
+    <div class="hero-reel">
+      <div class="reel-inner">
+        <div class="reel-scan"></div>
+        <div class="reel-label">SHOWREEL 2024</div>
+        <div class="reel-play" id="reelPlay"><i class="fas fa-play"></i></div>
+        <div class="reel-bars" id="reelBars"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SERVICES ─── -->
+  <section id="services">
+    <div class="services-header">
+      <div>
+        <div class="section-label reveal">What I Do</div>
+        <h2 class="section-title reveal reveal-delay-1">My <em>Services</em></h2>
+      </div>
+      <a href="#contact" class="btn-outline reveal">Start a Project <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal"><span class="service-num">01</span><div class="service-icon"><i class="fas fa-film"></i></div><div class="service-name">Cinematic Editing</div><p class="service-desc">Transforming raw footage into breathtaking cinematic experiences with precise cuts, pacing, and emotional resonance.</p></div>
+      <div class="service-card reveal reveal-delay-1"><span class="service-num">02</span><div class="service-icon"><i class="fas fa-fire"></i></div><div class="service-name">Social Media Reels</div><p class="service-desc">Hook-first, viral-ready edits optimized for Instagram, TikTok, and YouTube — designed to stop the scroll.</p></div>
+      <div class="service-card reveal reveal-delay-2"><span class="service-num">03</span><div class="service-icon"><i class="fas fa-magic"></i></div><div class="service-name">Motion Graphics</div><p class="service-desc">Dynamic text animations, lower thirds, visual effects, and brand-integrated motion graphics that pop on screen.</p></div>
+      <div class="service-card reveal reveal-delay-3"><span class="service-num">04</span><div class="service-icon"><i class="fas fa-palette"></i></div><div class="service-name">Color Grading</div><p class="service-desc">Professional color science to establish mood, atmosphere, and visual consistency across your entire project.</p></div>
+      <div class="service-card reveal reveal-delay-1"><span class="service-num">05</span><div class="service-icon"><i class="fas fa-building"></i></div><div class="service-name">Brand Films</div><p class="service-desc">Compelling brand story videos that communicate your values and connect deeply with your target audience.</p></div>
+      <div class="service-card reveal reveal-delay-2"><span class="service-num">06</span><div class="service-icon"><i class="fas fa-music"></i></div><div class="service-name">Sound Design</div><p class="service-desc">Immersive audio mixing, sound effect design, and music synchronization that elevates every frame.</p></div>
+    </div>
+  </section>
+
+  <!-- ─── PORTFOLIO ─── -->
+  <section id="portfolio">
+    <div class="portfolio-header">
+      <div>
+        <div class="section-label reveal">Selected Work</div>
+        <h2 class="section-title reveal reveal-delay-1">The <em>Reel</em></h2>
+      </div>
+      <div class="filter-tabs reveal">
+        <button class="filter-tab active" data-filter="all">All</button>
+        <button class="filter-tab" data-filter="brand">Brand</button>
+        <button class="filter-tab" data-filter="social">Social</button>
+        <button class="filter-tab" data-filter="film">Film</button>
+        <button class="filter-tab" data-filter="motion">Motion</button>
+      </div>
+    </div>
+    <div class="portfolio-grid reveal">
+
+      <div class="portfolio-item" data-cat="brand"
+           data-title="Nike Global Campaign" data-cat-label="Brand Film" data-duration="2:34"
+           data-link="https://www.youtube.com/watch?v=WnTKNiAL9qc"
+           data-desc="High-octane brand campaign cut for Nike's global push — kinetic editing meets cinematic colour grade. 12M+ views.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-1"></div>
+          <i class="p-icon-bg fas fa-shoe-prints"></i>
+          <div class="p-duration">2:34</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Brand Film</div>
+            <div class="p-title">Nike Global Campaign</div>
+            <div class="p-links">
+              <a href="https://www.youtube.com/watch?v=WnTKNiAL9qc" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="https://vimeo.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-vimeo"></i> Vimeo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-cat="social"
+           data-title="Viral Dance Reel" data-cat-label="Social Media" data-duration="0:45"
+           data-link="https://www.instagram.com/reels/"
+           data-desc="Trend-driven short-form reel hitting 4M+ views — synced cuts, speed ramps, and bold typography overlay.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-2"></div>
+          <i class="p-icon-bg fas fa-music"></i>
+          <div class="p-duration">0:45</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Social Media</div>
+            <div class="p-title">Viral Dance Reel</div>
+            <div class="p-links">
+              <a href="https://www.instagram.com/reels/" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="https://www.tiktok.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-tiktok"></i> TikTok</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-cat="film"
+           data-title="Midnight Drive" data-cat-label="Short Film" data-duration="5:12"
+           data-link="https://vimeo.com"
+           data-desc="Award-winning short film — atmospheric nocturnal edit with bespoke colour grade and Foley sound design. Regional film festival winner.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-3"></div>
+          <i class="p-icon-bg fas fa-car"></i>
+          <div class="p-duration">5:12</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Short Film</div>
+            <div class="p-title">Midnight Drive</div>
+            <div class="p-links">
+              <a href="https://vimeo.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-vimeo"></i> Vimeo</a>
+              <a href="https://www.youtube.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-cat="motion"
+           data-title="Tech Startup Launch" data-cat-label="Motion Graphics" data-duration="1:20"
+           data-link="https://www.youtube.com"
+           data-desc="Kinetic motion-graphic launch video for a Series-A startup — delivered 300% above engagement benchmark.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-4"></div>
+          <i class="p-icon-bg fas fa-rocket"></i>
+          <div class="p-duration">1:20</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Motion Graphics</div>
+            <div class="p-title">Tech Startup Launch</div>
+            <div class="p-links">
+              <a href="https://www.youtube.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="https://vimeo.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-vimeo"></i> Vimeo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-cat="brand"
+           data-title="Luxury Watch Ad" data-cat-label="Brand Film" data-duration="1:00"
+           data-link="https://www.youtube.com"
+           data-desc="60-second luxury commercial — macro cinematography, slow motion, and Teal &amp; Orange cinematic grade.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-5"></div>
+          <i class="p-icon-bg fas fa-clock"></i>
+          <div class="p-duration">1:00</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Brand Film</div>
+            <div class="p-title">Luxury Watch Ad</div>
+            <div class="p-links">
+              <a href="https://www.youtube.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="https://vimeo.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-vimeo"></i> Vimeo</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="portfolio-item" data-cat="social"
+           data-title="Travel Montage" data-cat-label="Social Content" data-duration="1:05"
+           data-link="https://www.youtube.com"
+           data-desc="Wanderlust travel montage spanning 12 countries — rich saturation grading with ambient sound design.">
+        <div class="p-thumb">
+          <div class="p-bg p-bg-6"></div>
+          <i class="p-icon-bg fas fa-globe"></i>
+          <div class="p-duration">1:05</div>
+          <div class="p-play"><i class="fas fa-play"></i></div>
+          <div class="p-overlay">
+            <div class="p-cat">Social Content</div>
+            <div class="p-title">Travel Montage</div>
+            <div class="p-links">
+              <a href="https://www.youtube.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="https://www.instagram.com" target="_blank" class="p-link-btn" onclick="event.stopPropagation()"><i class="fab fa-instagram"></i> Instagram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ─── UPLOAD ─── -->
+  <section id="upload">
+    <div class="section-label reveal">Submit Your Footage</div>
+    <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:3rem;">Upload Your <em>Work</em></h2>
+    <div class="upload-grid">
+      <div>
+        <div class="upload-zone reveal" id="uploadZone" onclick="document.getElementById('fileInput').click()">
+          <i class="fas fa-cloud-upload-alt upload-icon"></i>
+          <div class="upload-title">Drop Your Footage Here</div>
+          <p class="upload-sub">Drag &amp; drop files or click to browse</p>
+          <div class="upload-formats">
+            <span class="format-tag">MP4</span><span class="format-tag">MOV</span><span class="format-tag">AVI</span>
+            <span class="format-tag">MKV</span><span class="format-tag">PRPROJ</span><span class="format-tag">DaVinci</span>
+          </div>
+          <span class="btn-primary" style="display:inline-flex;pointer-events:none;">
+            <i class="fas fa-folder-open"></i> Browse Files
+          </span>
+          <input type="file" id="fileInput" multiple accept="video/*,.prproj,.drp">
+        </div>
+        <div class="upload-list" id="uploadList"></div>
+      </div>
+      <div class="upload-form reveal reveal-delay-2">
+        <div class="form-group"><label class="form-label"><i class="fas fa-user"></i>&nbsp; Your Name</label><input type="text" class="form-control" placeholder="John Doe"></div>
+        <div class="form-group"><label class="form-label"><i class="fas fa-envelope"></i>&nbsp; Email Address</label><input type="email" class="form-control" placeholder="john@email.com"></div>
+        <div class="form-group">
+          <label class="form-label"><i class="fas fa-tag"></i>&nbsp; Project Type</label>
+          <select class="form-control"><option value="">Select a service...</option><option>Cinematic Editing</option><option>Social Media Reels</option><option>Motion Graphics</option><option>Color Grading</option><option>Brand Film</option><option>Sound Design</option></select>
+        </div>
+        <div class="form-group"><label class="form-label"><i class="fas fa-clock"></i>&nbsp; Deadline</label><input type="date" class="form-control"></div>
+        <div class="form-group"><label class="form-label"><i class="fas fa-comment"></i>&nbsp; Project Brief</label><textarea class="form-control" placeholder="Describe your vision, tone, references..."></textarea></div>
+        <button class="btn-primary submit-btn" onclick="submitUpload()"><i class="fas fa-paper-plane"></i> Submit Project</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── SKILLS ─── -->
+  <section id="skills">
+    <div class="skills-top-row">
+      <div><div class="section-label reveal">Expertise</div><h2 class="section-title reveal reveal-delay-1">My <em>Skills</em></h2></div>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-bars reveal">
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-name"><i class="fas fa-cut"></i> Video Editing</span><span class="skill-pct">97%</span></div><div class="skill-track"><div class="skill-fill" data-width="97"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-name"><i class="fas fa-palette"></i> Color Grading</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" data-width="92"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-name"><i class="fas fa-magic"></i> Motion Graphics</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-width="88"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-name"><i class="fas fa-volume-up"></i> Sound Design</span><span class="skill-pct">84%</span></div><div class="skill-track"><div class="skill-fill" data-width="84"></div></div></div>
+        <div class="skill-bar-item"><div class="skill-bar-header"><span class="skill-name"><i class="fas fa-vr-cardboard"></i> VFX &amp; Compositing</span><span class="skill-pct">78%</span></div><div class="skill-track"><div class="skill-fill" data-width="78"></div></div></div>
+      </div>
+      <div class="skills-visual reveal reveal-delay-2">
+        <div class="tool-card"><i class="fas fa-film"></i><div class="tool-name">Premiere Pro</div><div class="tool-type">NLE Suite</div></div>
+        <div class="tool-card"><i class="fas fa-eye-dropper"></i><div class="tool-name">DaVinci Resolve</div><div class="tool-type">Color &amp; Edit</div></div>
+        <div class="tool-card"><i class="fas fa-layer-group"></i><div class="tool-name">After Effects</div><div class="tool-type">Motion &amp; VFX</div></div>
+        <div class="tool-card"><i class="fas fa-music"></i><div class="tool-name">Audition</div><div class="tool-type">Audio</div></div>
+        <div class="tool-card"><i class="fas fa-bezier-curve"></i><div class="tool-name">Final Cut Pro</div><div class="tool-type">Apple NLE</div></div>
+        <div class="tool-card"><i class="fas fa-cube"></i><div class="tool-name">Cinema 4D</div><div class="tool-type">3D Motion</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── TESTIMONIALS ─── -->
+  <section id="testimonials">
+    <div class="testimonials-header">
+      <div class="section-label reveal">Client Love</div>
+      <h2 class="section-title reveal reveal-delay-1">What They <em>Say</em></h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonial-card reveal"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">"Alex completely transformed our brand campaign. The pacing, the emotion, the color work — everything was absolutely on point. Blew our entire team away."</p><div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sarah Kim</div><div class="t-role">CMO · NovaBrand</div></div><div class="t-platform"><i class="fab fa-linkedin"></i></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-1"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">"Our YouTube channel went from 10k to 200k subscribers after working with Alex. The editing style is unlike anything I've seen — cinematic but still very social-native."</p><div class="t-author"><div class="t-avatar">MR</div><div><div class="t-name">Marcus Rivera</div><div class="t-role">Content Creator · 200K Subs</div></div><div class="t-platform"><i class="fab fa-youtube"></i></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-2"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p class="t-text">"The short film Alex cut for us won a regional film festival award. The turnaround was incredibly fast and communication was seamless throughout."</p><div class="t-author"><div class="t-avatar">AP</div><div><div class="t-name">Amara Peters</div><div class="t-role">Director · IndieFilms Co.</div></div><div class="t-platform"><i class="fab fa-instagram"></i></div></div></div>
+      <div class="testimonial-card reveal"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">"Alex's color grading gave our product video that high-end commercial feel we always dreamed of. ROI on that video was 4x our investment within the first month."</p><div class="t-author"><div class="t-avatar">JL</div><div><div class="t-name">Jake Liu</div><div class="t-role">Founder · LuxeGear</div></div><div class="t-platform"><i class="fab fa-twitter"></i></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-1"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">"I've worked with a lot of editors and Alex stands apart. The attention to sound design, the rhythm of every cut — it's truly an artistic experience."</p><div class="t-author"><div class="t-avatar">LN</div><div><div class="t-name">Laura Nguyen</div><div class="t-role">Producer · StudioWave</div></div><div class="t-platform"><i class="fab fa-vimeo"></i></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-2"><div class="t-stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="t-text">"Quick, professional, and genuinely passionate about the craft. Alex delivered our wedding film edit in 3 days and made us cry happy tears. Absolutely stunning."</p><div class="t-author"><div class="t-avatar">EM</div><div><div class="t-name">Emily &amp; Raj M.</div><div class="t-role">Wedding Film Client</div></div><div class="t-platform"><i class="fas fa-heart"></i></div></div></div>
+    </div>
+  </section>
+
+  <!-- ─── CONTACT ─── -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label reveal">Let's Connect</div>
+        <h2 class="section-title reveal reveal-delay-1" style="margin-bottom:2.5rem;">Start a <em>Conversation</em></h2>
+        <div class="contact-info">
+          <div class="contact-item reveal"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><div class="contact-label">Email</div><div class="contact-value">alex@alexreel.com</div></div></div>
+          <div class="contact-item reveal reveal-delay-1"><div class="contact-icon"><i class="fas fa-phone"></i></div><div><div class="contact-label">Phone</div><div class="contact-value">+1 (555) 264-8823</div></div></div>
+          <div class="contact-item reveal reveal-delay-2"><div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div><div><div class="contact-label">Based In</div><div class="contact-value">Los Angeles, CA — Available Worldwide</div></div></div>
+        </div>
+        <div class="contact-socials reveal reveal-delay-3">
+          <a href="https://instagram.com" target="_blank" class="social-btn"><i class="fab fa-instagram"></i></a>
+          <a href="https://youtube.com" target="_blank" class="social-btn"><i class="fab fa-youtube"></i></a>
+          <a href="https://vimeo.com" target="_blank" class="social-btn"><i class="fab fa-vimeo"></i></a>
+          <a href="https://linkedin.com" target="_blank" class="social-btn"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com" target="_blank" class="social-btn"><i class="fab fa-twitter"></i></a>
+          <a href="https://tiktok.com" target="_blank" class="social-btn"><i class="fab fa-tiktok"></i></a>
+        </div>
+      </div>
+      <div class="contact-form reveal reveal-delay-2">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">First Name</label><input type="text" class="form-control" placeholder="John" id="cfName"></div>
+          <div class="form-group"><label class="form-label">Last Name</label><input type="text" class="form-control" placeholder="Doe" id="cfLast"></div>
+        </div>
+        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-control" placeholder="john@company.com" id="cfEmail"></div>
+        <div class="form-group"><label class="form-label">Service Needed</label><select class="form-control" id="cfService"><option value="">Choose a service...</option><option>Cinematic Editing</option><option>Social Media Reels</option><option>Motion Graphics</option><option>Color Grading</option><option>Brand Film</option><option>Sound Design</option></select></div>
+        <div class="form-group"><label class="form-label">Budget Range</label><select class="form-control"><option>$500 – $1,000</option><option>$1,000 – $3,000</option><option>$3,000 – $7,500</option><option>$7,500+</option></select></div>
+        <div class="form-group"><label class="form-label">Your Message</label><textarea class="form-control" placeholder="Tell me about your project..." id="cfMsg"></textarea></div>
+        <button class="btn-primary submit-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FOOTER ─── -->
+  <footer>
+    <div class="footer-brand">ALEX REEL</div>
+    <div class="footer-copy">© 2024 Alex Reel. All rights reserved. Crafted with <i class="fas fa-heart"></i> frame by frame.</div>
+    <div class="footer-socials">
+      <a href="https://instagram.com" target="_blank" class="social-btn footer-social-btn"><i class="fab fa-instagram"></i></a>
+      <a href="https://youtube.com"   target="_blank" class="social-btn footer-social-btn"><i class="fab fa-youtube"></i></a>
+      <a href="https://vimeo.com"     target="_blank" class="social-btn footer-social-btn"><i class="fab fa-vimeo"></i></a>
+    </div>
+  </footer>
+
+  <!-- ─── TOAST ─── -->
+  <div class="toast" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span class="toast-msg" id="toastMsg">Success!</span>
+  </div>
+
+  <!-- ─── VIDEO MODAL ─── -->
+  <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+    <div class="modal">
+      <div class="modal-header">
+        <div>
+          <div class="section-label modal-cat" id="modalCat"></div>
+          <h3 class="modal-title" id="modalTitle"></h3>
+        </div>
+        <button class="modal-close" onclick="document.getElementById('modalOverlay').classList.remove('open')">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="modal-preview">
+        <div class="modal-preview-bg"></div>
+        <div class="modal-preview-content">
+          <div class="modal-play-btn"><i class="fas fa-play"></i></div>
+          <p class="modal-duration" id="modalDuration"></p>
+        </div>
+      </div>
+      <p class="modal-desc" id="modalDesc"></p>
+      <div class="modal-actions">
+        <a class="btn-primary modal-watch-btn" id="modalWatchBtn" href="#" target="_blank">
+          <i class="fas fa-external-link-alt"></i> Watch Project
+        </a>
+        <button class="btn-outline modal-close-btn" onclick="document.getElementById('modalOverlay').classList.remove('open')">
+          <i class="fas fa-times"></i> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

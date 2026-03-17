@@ -3,64 +3,6 @@
    script.js  |  Theme Toggle + Work Links
    ═══════════════════════════════════════════ */
 
-/* ─── ANIMATED HERO PARTICLES ─── */
-function createParticles() {
-  const container = document.getElementById('particlesContainer');
-  if (!container) return;
-  
-  const particleCount = 50;
-  
-  for (let i = 0; i < particleCount; i++) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Random size
-    const rand = Math.random();
-    if (rand < 0.3) particle.classList.add('small');
-    else if (rand > 0.7) particle.classList.add('large');
-    
-    // Random position
-    const x = Math.random() * window.innerWidth;
-    const y = Math.random() * window.innerHeight;
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-    
-    // Random animation duration and delay
-    const duration = 8 + Math.random() * 12;
-    const delay = Math.random() * 5;
-    const offset = Math.random() * 40 - 20;
-    
-    particle.style.animationDuration = duration + 's';
-    particle.style.animationDelay = delay + 's';
-    particle.style.setProperty('--x-offset', offset + 'px');
-    
-    // Update animation to use the CSS variable
-    const style = document.createElement('style');
-    style.textContent = `
-      .particle {
-        --x-offset: 0px;
-      }
-      @keyframes float {
-        0% { transform: translateY(100vh) translateX(0); opacity: 0; }
-        10% { opacity: 1; }
-        90% { opacity: 1; }
-        100% { transform: translateY(-100vh) translateX(var(--x-offset)); opacity: 0; }
-      }
-    `;
-    if (i === 0) document.head.appendChild(style);
-    
-    container.appendChild(particle);
-  }
-}
-
-// Create particles on page load
-document.addEventListener('DOMContentLoaded', createParticles);
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', createParticles);
-} else {
-  createParticles();
-}
-
 /* ─── CUSTOM CURSOR ─── */
 const cursor     = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursorRing');
@@ -143,92 +85,49 @@ window.addEventListener('scroll', () => {
 
 /* ─── ANIMATED REEL WAVEFORM BARS ─── */
 const reelBarsContainer = document.getElementById('reelBars');
-if (reelBarsContainer) {
-  for (let i = 0; i < 40; i++) {
-    const bar = document.createElement('div');
-    bar.className = 'reel-bar';
-    bar.style.animationDuration = (0.6 + Math.random() * 1.2) + 's';
-    bar.style.animationDelay    = (Math.random() * 1) + 's';
-    reelBarsContainer.appendChild(bar);
-  }
+for (let i = 0; i < 40; i++) {
+  const bar = document.createElement('div');
+  bar.className = 'reel-bar';
+  bar.style.animationDuration = (0.6 + Math.random() * 1.2) + 's';
+  bar.style.animationDelay    = (Math.random() * 1) + 's';
+  reelBarsContainer.appendChild(bar);
 }
 
 
 /* ─── HERO STAT COUNTERS ─── */
 const counterEls = document.querySelectorAll('[data-count]');
-if (counterEls.length > 0) {
-  let counted = false;
+let counted = false;
 
-  function animateCounters() {
-    if (counted) return;
-    const heroRect = document.getElementById('hero').getBoundingClientRect();
-    if (heroRect.bottom > 0) {
-      counted = true;
-      counterEls.forEach((el) => {
-        const target = +el.dataset.count;
-        const suffix = target >= 10 ? '+' : '';
-        let current = 0;
-        const inc   = target / 60;
-        const timer = setInterval(() => {
-          current += inc;
-          if (current >= target) { current = target; clearInterval(timer); }
-          el.textContent = Math.floor(current) + suffix;
-        }, 25);
-      });
-    }
-  }
-  window.addEventListener('scroll', animateCounters);
-  setTimeout(animateCounters, 500);
-}
-
-
-/* ─── SCROLL REVEAL & ANIMATIONS ─── */
-const revealEls = document.querySelectorAll('.reveal, .scale-reveal, .rotate-reveal, .slide-left, .slide-right, .bounce-in, .stagger-children');
-const revealObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((e) => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        // Don't unobserve - allow re-trigger on scroll back up if needed
-      }
+function animateCounters() {
+  if (counted) return;
+  const heroRect = document.getElementById('hero').getBoundingClientRect();
+  if (heroRect.bottom > 0) {
+    counted = true;
+    counterEls.forEach((el) => {
+      const target = +el.dataset.count;
+      const suffix = target >= 10 ? '+' : '';
+      let current = 0;
+      const inc   = target / 60;
+      const timer = setInterval(() => {
+        current += inc;
+        if (current >= target) { current = target; clearInterval(timer); }
+        el.textContent = Math.floor(current) + suffix;
+      }, 25);
     });
-  },
-  { threshold: 0.15, rootMargin: '0px 0px -50px 0px' }
+  }
+}
+window.addEventListener('scroll', animateCounters);
+setTimeout(animateCounters, 500);
+
+
+/* ─── SCROLL REVEAL ─── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver(
+  (entries) => entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.1 }
 );
 revealEls.forEach((el) => revealObserver.observe(el));
 
-/* ─── PARALLAX SCROLL EFFECT ─── */
-const parallaxEls = document.querySelectorAll('.parallax');
-let ticking = false;
-
-function updateParallax() {
-  parallaxEls.forEach((el) => {
-    const rect = el.getBoundingClientRect();
-    const offset = (window.innerHeight - rect.top) * 0.5;
-    el.style.transform = `translateY(${offset * 0.03}px)`;
-  });
-  ticking = false;
-}
-
-window.addEventListener('scroll', () => {
-  if (!ticking) {
-    requestAnimationFrame(updateParallax);
-    ticking = true;
-  }
-}, { passive: true });
-
-/* ─── SMOOTH SCROLL ON ANCHOR LINKS ─── */
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', (e) => {
-    const href = link.getAttribute('href');
-    if (href === '#') return;
-    const target = document.querySelector(href);
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
 
 /* ─── SKILL BARS ─── */
 const skillFills   = document.querySelectorAll('.skill-fill');
@@ -239,75 +138,6 @@ const skillObserver = new IntersectionObserver(
   { threshold: 0.3 }
 );
 skillFills.forEach((el) => skillObserver.observe(el));
-
-
-/* ─── SCROLL-BASED OPACITY & MOVEMENT ─── */
-function handleScrollAnimations() {
-  document.querySelectorAll('.portfolio-item, .service-card, .testimonial-card').forEach((el) => {
-    if (!el.hasAttribute('data-scroll-animated')) {
-      const rect = el.getBoundingClientRect();
-      const scrollPercent = (window.innerHeight - rect.top) / window.innerHeight;
-      
-      // Fade in as scrolling into view
-      el.style.opacity = Math.min(scrollPercent * 1.5, 1);
-      
-      // Subtle lift effect
-      if (scrollPercent > 0.2) {
-        const lift = (scrollPercent - 0.2) * 8;
-        el.style.transform = `translateY(${Math.min(lift, 20)}px)`;
-      }
-    }
-  });
-}
-
-window.addEventListener('scroll', handleScrollAnimations, { passive: true });
-handleScrollAnimations(); // Initial call
-
-/* ─── SCROLL TEXT FADE EFFECT ─── */
-const fadeTextEls = document.querySelectorAll('.hero-subtitle-tag, .hero-tagline, .hero-title-large');
-function updateTextScroll() {
-  const heroSection = document.getElementById('hero');
-  if (!heroSection) return;
-  
-  const heroRect = heroSection.getBoundingClientRect();
-  const heroProgress = Math.max(0, Math.min(1, (window.innerHeight - heroRect.top) / window.innerHeight));
-  
-  fadeTextEls.forEach((el) => {
-    el.style.opacity = Math.max(0.5, 1 - heroProgress * 0.5);
-  });
-}
-
-window.addEventListener('scroll', updateTextScroll, { passive: true });
-
-/* ─── COUNTER ANIMATION ON SCROLL VIEW ─── */
-function animateNumbersOnView() {
-  const numberEls = document.querySelectorAll('[data-count]');
-  numberEls.forEach((el) => {
-    if (!el.hasAttribute('data-animated')) {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        el.setAttribute('data-animated', 'true');
-        const target = +el.dataset.count;
-        const startNum = 0;
-        const duration = 1.5;
-        const startTime = Date.now();
-        
-        const counter = () => {
-          const elapsed = (Date.now() - startTime) / 1000;
-          const progress = Math.min(elapsed / duration, 1);
-          const current = Math.floor(startNum + (target - startNum) * progress);
-          el.textContent = current + (target > 9 ? '+' : '');
-          
-          if (progress < 1) requestAnimationFrame(counter);
-        };
-        counter();
-      }
-    }
-  });
-}
-
-window.addEventListener('scroll', animateNumbersOnView, { passive: true });
-animateNumbersOnView(); // Check on load
 
 
 /* ─── PORTFOLIO FILTER TABS ─── */
